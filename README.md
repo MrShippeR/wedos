@@ -36,8 +36,8 @@ $ sudo su
 @reboot   /opt/wedos/wedos-updatedns.py
 0 * * * * var/www/ddns/wedos-updatedns.py
 ```
-což bude spouštět skript při každém (re)startu počítače a pak každou hodinu
-6. uložíme a máme hotovo
+> což bude spouštět skript při každém (re)startu počítače a pak každou hodinu
 
-Návod je zveřejněný ještě na podpoře Wedosu.
-https://help.wedos.cz/otazka/dynamicka-dns-ddns-u-wedosu/36428/
+Uložíme a máme hotovo.
+
+Návod je zveřejněný ještě na [podpoře Wedosu](https://help.wedos.cz/otazka/dynamicka-dns-ddns-u-wedosu/36428/).
