@@ -24,13 +24,13 @@ $ sudo su
 # chown -R user:user /opt/wedos
 ```
 
-3. úpravíme skript ```$ nano wedos-updatedns.py``` - vyplníme 3 řádky, proměnné LOGIN, PASSWORD, DOMAIN 
+3. úpravíme skript ```$ nano opt/wedos/wedos-updatedns.py``` - vyplníme 3 řádky, proměnné LOGIN, PASSWORD, DOMAIN 
 
-4. soubor můžeme spustit ručně: ```$ ./opt/wedos/wedos-updatedns.py```
+4. soubor můžeme spustit ručně: ```$ /opt/wedos/wedos-updatedns.py```
 > Výstupem skriptu je zpráva, ```IP addresses match``` nebo ```Updated {old IP} to {new IP}```
 
 ## Automatické spouštění skriptu
-1. otevřeme správce úloh ```$ sudo crontab -e```
+1. otevřeme správce úloh ```$ crontab -e```
 2. na konec souboru přidáme tyto dva řádky:
 ```
 @reboot     opt/wedos/wedos-updatedns.py
