@@ -40,4 +40,4 @@ $ sudo su
 
 Uložíme a máme hotovo.
 
-Návod je zveřejněný ještě na [podpoře Wedosu](https://help.wedos.cz/otazka/dynamicka-dns-ddns-u-wedosu/36428/).
+Návod je zveřejněný ještě na [podpoře Wedosu](https://help.wedos.cz/otazka/dynamicka-dns-ddns-u-wedosu/36428/). 
