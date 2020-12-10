@@ -7,14 +7,16 @@ This script uses Wedos WAPI for modifiing saved IP adress DNS record to actual I
 Script finds userfull in case you internet provider change your IP adress in random times and you want automatically watch and apply changes.
 
 MANUAL
-1)Set up your WEDOS API (Czech): http://kb.wedos.com/wapi/aktivace-nastaveni.html
-2)Set your credentials few lines bellow.
-3)Run this daily by cron.
+1)Set up A domain
+2)Set up your WEDOS API (Czech): http://kb.wedos.com/wapi/aktivace-nastaveni.html
+3)Set your credentials few lines bellow.
+4)Set up cron for automatic running.
 This was tested on Python 3 only and requires requests.
 
 
 Modified version by:
 Copyright (c) 2020 Marek Vach <mvach@email.cz>
+https://github.com/MrShippeR/wedos
 
 Original software by:
 Copyright (c) 2015 Miro Hrončok <miro@hroncok.cz>
