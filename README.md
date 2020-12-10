@@ -34,7 +34,7 @@ $ sudo su
 2. na konec souboru přidáme tyto dva řádky:
 ```
 @reboot     opt/wedos/wedos-updatedns.py
-0 * * * *   var/www/ddns/wedos-updatedns.py
+0 * * * *   opt/wedos/wedos-updatedns.py
 ```
 > což bude spouštět skript při každém (re)startu počítače a pak každou hodinu. Čas si můžete upravit pomocí [konfigurátoru](https://crontab.guru/).
 
