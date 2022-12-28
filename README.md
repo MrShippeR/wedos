@@ -24,7 +24,7 @@ $ sudo su
 # chown -R user:user /opt/wedos
 ```
 
-3. úpravíme skript ```$ nano opt/wedos/wedos-updatedns.py``` - vyplníme 3 řádky, proměnné LOGIN, PASSWORD, DOMAIN 
+3. úpravíme skript ```$ nano opt/wedos/wedos-updatedns.py``` - vyplníme řádky, proměnné LOGIN, PASSWORD, DOMAIN, SUBDOMAIN
 
 4. soubor můžeme spustit ručně: ```$ /opt/wedos/wedos-updatedns.py```
 > Výstupem skriptu je zpráva, ```IP addresses match``` nebo ```Updated {old IP} to {new IP}```
