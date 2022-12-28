@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
-Script for Wedos DDNS 
+Script for Wedos DDNS
 ==============================
 This script uses Wedos WAPI for modifiing saved IP adress DNS record to actual IP of running device.
 Script finds userfull in case you internet provider change your IP adress in random times and you want automatically watch and apply changes.
@@ -53,6 +53,7 @@ import urllib.request
 LOGIN = 'user@example.com' #CASE SENSITIVE!
 PASSWORD = 'passW0rd!' # by Wedos requirments must contain at least one upper case and one special symbol
 DOMAIN = 'example.com' # 'example.com' - must be already existing A record!
+SUBDOMAIN = 'subdomain' # Empty string in case of changing 2nd level domain name or subdomain - also existing A record
 
 # Keep this
 API = 'https://api.wedos.com/wapi/json'
@@ -85,31 +86,35 @@ def dns_domain_commit(name=DOMAIN):
     return request('dns-domain-commit', locals())
 
 
-def find_A_record():
+def find_A_record(sub = SUBDOMAIN):
     data = dns_rows_list()
 
     for row in data['response']['data']['row']:
-        if row['rdtype'] == 'A' and row['name'] == '':
+        if row['rdtype'] == 'A' and row['name'] == sub:
             return row['ID'], row['ttl']
 
     raise Exception('Cannot find A record for the domain')
 
+def fqdn(sub, domain): # without a dot
+    return domain if sub == '' else '{}.{}'.format(sub, domain)
 
-def update_A_record(ip, domain=DOMAIN):
-    dns_row_update(*find_A_record(), rdata=ip)
+def update_A_record(ip, sub=SUBDOMAIN, domain=DOMAIN):
+    dns_row_update(*find_A_record(sub), rdata=ip)
     dns_domain_commit()
-    print('Updated {} to {}'.format(domain, ip))
+    print('Updated {} to {}'.format(fqdn(sub, domain), ip))
 
 def get_current_device_public_ip():
     ident_me_find_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
     return ident_me_find_ip
 
-def compare_ip_of_dns_record_and_local_device_and_make_changes(domain=DOMAIN):
-    dns_ip = socket.gethostbyname(domain)
+def compare_ip_of_dns_record_and_local_device_and_make_changes(sub=SUBDOMAIN, domain=DOMAIN):
+    testadr = fqdn(sub, domain)
+
+    dns_ip = socket.gethostbyname(testadr)
     local_device_ip = get_current_device_public_ip()
 
     if dns_ip != local_device_ip:
-        update_A_record(local_device_ip, domain)
+        update_A_record(local_device_ip, sub, domain)
     else:
         print('IP addresses match')
 
